@@ -24,7 +24,7 @@ Now that we have the required packages installed, download the Github respositor
 
 Navigate (change directory) to the fetch_assessment file’s directory in Command Prompt/Terminal:
 
-cd … > fetch_assessment
+	cd … > fetch_assessment
 
 WARNING: There should be nothing else in this directory, as there is another fetch_assessment folder in a directory with the folder fetch_points and the files manage.py and db.sqlite3
 
