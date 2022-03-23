@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div style="float:left">
+		<form method = "post">
+			{% csrf_token %} <!-- csrf token is required for data security (prevents forgery request)-->
+			<h1>Make A Transaction:</h1> <!-- Transaction form -->
+			<label>Payer:</label>
+			<input type="text" name="payer" value=''>
+			<label>Points:</label>
+			<input type="number" name="points" value=''>
+			<label>Timestamp:
+			<input type="text" name="timestamp" value=''>
+			</label>
+			<input type="submit">		
+		</form>
+		<form method = "post">
+			{% csrf_token %}
+			<h1>Spend Your Points:</h1> <!-- Spending form -->
+			<label>Points:</label>
+			<input type="number" name="sp_points">
+			<label>Timestamp:
+			<input type="text" name="sp_timestamp">
+			</label>
+			<input type="submit">		
+		</form>
+		<br/>
+	</div>
+	<div style="float: right">
+		<h1>Total Points: {{tot_balance}} </h1> <!-- Displays the total balances table -->
+		{% for balance in balances %} <!-- "balances" is the key passed throught the render context -->
+			<p>Payer: <b> {{balance.payer}} </b>, Points: <b> {{balance.total}} </b> </p>
+		{% endfor %}
+	</div>
+	<div style="background-color:#aaa; clear: both;">
+		<center>
+			<br/>
+		</center>
+	</div>
+	<div style="clear: both;">
+		<center>
+			<h1>Transactions Ledger</h1> <!-- Displays all Transactions from the database -->
+			{% for transaction in transactions %} <!-- "transactions" is the key passed throught the render context -->
+				<p>Payer: <b> {{transaction.payer}} </b>, Points: <b> {{transaction.points}} </b>, Timestamp: <b> {{transaction.timestamp}} </b> </p>
+			{% endfor %}
+		</center>
+	</div>
+</body>
+</html>
